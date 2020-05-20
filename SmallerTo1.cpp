@@ -8,7 +8,7 @@ int PathToOne(int n) //Bottom Up Approach
     if(n==1 or n==2)
         return n-1;
     int dp[100] = {0};
-
+    
     for(int i=2;i<=n;i++)
     {
         if(i%2==0 and i%3==0)
