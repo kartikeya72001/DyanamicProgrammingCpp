@@ -16,6 +16,19 @@ int RodCuttingTD(int n, int price[], int dp[])
     }
     return dp[n] = maxp;
 }
+
+int RodCuttingBU(int n, int price[])
+{
+    int dp[100] = {0};
+    for(int i=1;i<=n;i++){
+        int best = 0;
+        for(int j=1;j<=i;j++)
+            best = max(best, price[j-1] + dp[i-j]);
+        dp[i] = best;
+    }
+    return dp[n];
+}
+
 int RodCutting(int n, int price[])
 {
     if(n==0)
@@ -30,15 +43,11 @@ int RodCutting(int n, int price[])
 }
 
 int main(int argc, char const *argv[]) {
-    int n=4, price[] = {2,3,2,5};
+    int n=4, price[] = {1,3,2,5};
     int dp[100] = {0};
-    //cout<<RodCutting(n,price)<<endl;
-    cout<<RodCuttingTD(n,price,dp)<<endl;
+    cout<<"Recursion:   "<<RodCutting(n,price)<<endl;
+    cout<<"TD: "<<RodCuttingTD(n,price,dp)<<endl;
+    cout<<"BU: "<<RodCuttingBU(n,price)<<endl;
     cout<<clock()<<"ms"<<endl;
-    // for(int i=0;i<n;i++)
-    // {
-    //     cout<<dp[i]<<" ";
-    // }
-    // cout<<endl;
     return 0;
 }
