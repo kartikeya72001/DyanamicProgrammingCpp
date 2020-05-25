@@ -22,7 +22,7 @@ int LIS(int n,int arr[])
     // {
     //     cout<<dp[i]<<" ";
     // }
-    cout<<endl;
+    //cout<<endl;
     return sol;
 }
 
@@ -33,7 +33,7 @@ int main(int argc, char const *argv[]) {
     // {
     //     cin>>arr[i];
     // }
-    cout<<"LIS is: "<<LIS(n,arr)<<endl;
+    cout<<"LIS is: "<<LIS(n,arr)+1<<endl;
     cout<<clock()<<"ms";
     return 0;
 }
