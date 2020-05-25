@@ -40,7 +40,7 @@ string LCSString(string s1, string s2)
             }
 
             else
-                q =dp[i-1][j].length() > dp[i][j-1].length()? dp[i-1][j]:dp[i][j-1];
+                q = dp[i-1][j].length() > dp[i][j-1].length() ? dp[i-1][j]:dp[i][j-1];
             dp[i][j] = q;
         }
     }
