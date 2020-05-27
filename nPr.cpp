@@ -34,10 +34,21 @@ int nPrDp(int n, int k)
     return dp[n][k];
 }
 
+int Permutations(int n, int k)
+{
+    int fact[n+1];
+    fact[0] = 1;
+
+    for(int i=1;i<=n;i++)
+        fact[i] = i*fact[i-1];
+    return fact[n]/fact[n-k];
+}
+
 int main(int argc, char const *argv[]) {
     int n,k;
     cin>>n>>k;
-    cout<<nPr(n,k)<<endl;
+    //cout<<nPr(n,k)<<endl;
     //cout<<nPrDp(n,k)<<endl;
+    cout<<Permutations(n,k)<<endl;
     return 0;
 }
