@@ -48,7 +48,7 @@ int main(int argc, char const *argv[]) {
     int n,k;
     cin>>n>>k;
     //cout<<nPr(n,k)<<endl;
-    //cout<<nPrDp(n,k)<<endl;
-    cout<<Permutations(n,k)<<endl;
+    cout<<nPrDp(n,k)<<endl;
+    //cout<<Permutations(n,k)<<endl;
     return 0;
 }
