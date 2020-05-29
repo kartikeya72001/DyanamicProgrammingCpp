@@ -1,45 +1,52 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
+int main() {
+	int n,k;
+	cin>>n>>k;
+	int a[n];
+	for(int i=0;i<n;i++){
+		cin>>a[i];
+	}
+	int l=0,r=0;
+	int zeros=0;
+	int maxlength=0;
+	int length=0;
 
-int Count(int *arr, int n, int k)
-{
-    int dp[1000];
-    dp[0] = 0;
-    int cur = arr[0];
-    int ans = 0;
-    int i;
-    for(i;i<=n;i++)
-    {
-        if(ans/2 == k || ans/2==k-1)
-            break;
-        if(arr[i] == !cur)
-        {
-            dp[i] += dp[i-1]+1;
-            cur = arr[i];
-            ans++;
+    int maxLengthL = -1;
+    int maxLengthR = -1;
+
+	while(r<=n-1){
+		if(a[r]==1){
+			length=r-l+1;
+			r++;
+		}
+		else{
+			zeros++;
+			while(zeros>k){
+				if(a[l]==0)zeros--;
+				l++;
+			}
+			length=r-l+1;
+			r++;
+		}
+
+        if(length > maxlength) {
+            maxlength = length;
+            maxLengthR = r - 1;
+            maxLengthL = l;
         }
-        else
-        {
-            dp[i] = 0;
-            ans=0;
-        }
-    }
-    // for(int j=0;j<i;j++)
-    //     cout<<dp[j]<<" ";
-    // cout<<endl;
-    return dp[i-1];
-}
+	}
 
-int main(int argc, char const *argv[]) {
-    int n, arr[100000],k;
-    cin>>n>>k;
-    for(int i=0;i<n;i++)
-        cin>>arr[i];
-
-    cout<<Count(arr,n,k)<<endl;
-    return 0;
+	cout<<maxlength<<endl;
+	for(int i=0;i<maxLengthL;i++){
+		cout<<a[i]<<" ";
+	}
+    if(maxLengthL != -1)
+	for(int i = maxLengthL;i<=maxLengthR;i++){
+		cout<<1<<" ";
+	}
+	for(int i=maxLengthR+1;i<n;i++){
+     	cout<<a[i]<<" ";
+	}
+	return 0;
 }
-/*
-10 2
-1 0 0 1 0 1 0 1 0 1
-*/
